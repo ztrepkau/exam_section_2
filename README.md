@@ -80,7 +80,7 @@ npm install -g istanbul nyc opn-cli
 + Let all other urls, set 404 as status code and render "error.ejs" passing "Error" as head.title value (like ex8)
 + Configure express app to listen on port 8015 in main_webServer.js and print a console statement specifying which port number it is listening on (like ex8)
 
-## running code0
+## running code 
 + run just the unit tests, screen capture its output on git bash console
 + run unit tests and coverage report. Capture its output of coverage report on git bash console
 + screen capture coverage output in a browser
