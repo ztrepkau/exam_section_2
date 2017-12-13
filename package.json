@@ -1,34 +1,63 @@
 {
-  "name": "exam_section_2",
-  "version": "1.0.0",
-  "description": "+ create project directory and its sub directories\r ```\r mkdir -p /c/fdu/csci3444/projects/exam_section_2\r cd /c/fdu/csci3444/projects/exam_section_2\r mkdir -p src/common/util/math\r mkdir -p test/common/util/math\r mkdir -p views/pages\r mkdir -p views/partials\r ```\r + create package.json\r ```\r npm init --yes\r ```\r + make project a git version controlled project\r + copy/create proper .gitignore file (for example from my ex8 in github)\r + install prod dependencies and add them to package.json\r ```\r npm install express ejs --save\r ```\r + to avoid restarting the server every time we change JS code, install nodemon as a dev dependency, which will watch our app and restart the server when needed\r ```\r npm install nodemon --save-dev \r ```\r + Install dev dependencies (meaning they are not needed for prod, just for dev) of Mocha, Chai, Istanbul, Nyc and let them be auto added to package.json. Also installing istanbul, nyc, opn-cli globally too \r ```\r npm install mocha chai istanbul nyc --save-dev\r ```\r + Install related helpfull tools globally\r ```\r npm install -g istanbul nyc opn-cli \r ```\r + Modify package.json's \"scripts\" element to have things to;\r     - run unit tests only via mocha (like \"testOnly\" of ex7)\r     - run unit tests, generate/show coverage report on console and then pop coverage report on browser (like \"testAndCoverageAndReport\" of ex7)\r     - start web application via nodemon (like \"start_express_ejs_bootstrap_with_nodemon\" of ex8)",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ztrepkau/exam_section_2.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ztrepkau/exam_section_2/issues"
-  },
-  "homepage": "https://github.com/ztrepkau/exam_section_2#readme",
-  "dependencies": {
-    "ejs": "^2.5.7",
-    "express": "^4.16.2"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^4.0.1",
-    "nodemon": "^1.12.1",
-    "nyc": "^11.3.0"
-  }
+    "name": "exam_section_2",
+    "version": "1.0.0",
+    "description": "+ create project directory and its sub directories\r ```\r mkdir -p /c/fdu/csci3444/projects/exam_section_2\r cd /c/fdu/csci3444/projects/exam_section_2\r mkdir -p src/common/util/math\r mkdir -p test/common/util/math\r mkdir -p views/pages\r mkdir -p views/partials\r ```\r + create package.json\r ```\r npm init --yes\r ```\r + make project a git version controlled project\r + copy/create proper .gitignore file (for example from my ex8 in github)\r + install prod dependencies and add them to package.json\r ```\r npm install express ejs --save\r ```\r + to avoid restarting the server every time we change JS code, install nodemon as a dev dependency, which will watch our app and restart the server when needed\r ```\r npm install nodemon --save-dev \r ```\r + Install dev dependencies (meaning they are not needed for prod, just for dev) of Mocha, Chai, Istanbul, Nyc and let them be auto added to package.json. Also installing istanbul, nyc, opn-cli globally too \r ```\r npm install mocha chai istanbul nyc --save-dev\r ```\r + Install related helpfull tools globally\r ```\r npm install -g istanbul nyc opn-cli \r ```\r + Modify package.json's \"scripts\" element to have things to;\r     - run unit tests only via mocha (like \"testOnly\" of ex7)\r     - run unit tests, generate/show coverage report on console and then pop coverage report on browser (like \"testAndCoverageAndReport\" of ex7)\r     - start web application via nodemon (like \"start_express_ejs_bootstrap_with_nodemon\" of ex8)",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "start_site": "nodemon ./src/main_webServer.js",
+
+        "test": "npm run testAndCoverage",
+
+        "testOnly": "npm run test_mocha_all",
+
+        "test_mocha_testDirOnly": "mocha",
+        "test_mocha_all": "mocha --recursive",
+        "test_mocha_all_TDD_asWellAs_BDD": "mocha --recursive --ui tdd",
+
+        "testAndCoverage": "npm run testAndCoverage_via_istanbul && npm run testAndCoverage_via_nyc",
+
+        "testAndCoverage_via_nyc": "nyc mocha --recursive",
+        "testAndCoverage_via_nyc_TDD_asWellAs_BDD": "nyc mocha --recursive --ui tdd",
+
+        "testAndCoverage_via_istanbul": "istanbul cover ./node_modules/mocha/bin/_mocha -- --recursive",
+        "testCoverage_via_istanbul_2": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- --recursive",
+        "testAndCoverage_via_istanbul_DONTwork": "istanbul cover _mocha",
+
+        "checkCoverage": "npm run checkCoverage_perFile_nyc",
+        "checkCoverage_overAll_nyc_defaults": "nyc check-coverage || true",
+        "checkCoverage_overAll_nyc": "nyc check-coverage --lines 90 --functions 95 --branches 85 || true",
+        "checkCoverage_perFile_nyc": "nyc check-coverage --lines 90 --functions 95 --branches 85 --per-file || true",
+        "checkCoverage_perFile_istanbul": "istanbul check-coverage --lines 90 --functions 95 --branches 85 --per-file || true",
+
+        "openCoverageReport": "npm run openCoverageReport_inBrowser",
+        "openCoverageReport_inShell_via_nyc": "nyc report",
+        "openCoverageReport_inBrowser": "opn coverage/lcov-report/index.html",
+
+        "testAndCoverageAndReport": "npm run testAndCoverage && npm run openCoverageReport"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ztrepkau/exam_section_2.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ztrepkau/exam_section_2/issues"
+    },
+    "homepage": "https://github.com/ztrepkau/exam_section_2#readme",
+    "dependencies": {
+        "ejs": "^2.5.7",
+        "express": "^4.16.2"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "istanbul": "^0.4.5",
+        "mocha": "^4.0.1",
+        "nodemon": "^1.12.1",
+        "nyc": "^11.3.0"
+    }
 }
