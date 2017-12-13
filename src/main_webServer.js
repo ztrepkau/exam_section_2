@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 
 app.get('/square', function(req, res) {
     var inpNumber = 2;
-    var resultNumber = myPowers.square(inpNumber)
+    var resultNumber = myPowers.toSquare(inpNumber)
     var data2template = {
         head: { title: 'Square Page' },
         inpNumber: inpNumber,
@@ -29,7 +29,7 @@ app.get('/square', function(req, res) {
 
 app.get('/cube', function(req, res) {
     var inpNumber = 3;
-    var resultNumber = myPowers.cube(inpNumber)
+    var resultNumber = myPowers.toCube(inpNumber)
     var data2template = {
         head: { title: 'Cube Page' },
         inpNumber: inpNumber,
