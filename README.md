@@ -1,4 +1,4 @@
-# exam section 2 - take home coding section of exam THIS IS ZACH TREPKAU'S VERSION
+# exam section 2 - take home coding section of exam THIS IS ZACH TREPKAU'S VERSION OF EXAM SECTION 2
 
 ## setup
 + create project directory and its sub directories
@@ -85,4 +85,4 @@ npm install -g istanbul nyc opn-cli
 + run unit tests and coverage report. Capture its output of coverage report on git bash console
 + screen capture coverage output in a browser
 + start up the app, screen capture home ("/"), square, cube, about, error page views
-+ be ready to run it on your laptop and demo it to ilker
++ be ready to run it on your laptop and demo it to ilker# exam2
