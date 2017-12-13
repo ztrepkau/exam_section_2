@@ -1,4 +1,4 @@
-# exam section 2 - take home coding section of exam
+# exam section 2 - take home coding section of exam THIS IS ZACH TREPKAU'S VERSION
 
 ## setup
 + create project directory and its sub directories
